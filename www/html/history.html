@@ -1,0 +1,25 @@
+<ons-page modifier="full_bg" ons-show="updateToolbar('History')">
+  <div class="content">
+    <ons-list style="background-color: transparent;" scroll-glue>
+      <ons-list-item tappable ng-repeat="video in history track by $index" ng-click="modal.show(); launch(video, false)">
+        <div class="left">
+          <img class="thumbnail" src="./css/Thumbnail.png">
+        </div>
+        <div class="center">
+          <div class="title">
+            {{ video.title }}
+          </div>
+          <div class="user">
+            <ons-icon icon="fa-user"></ons-icon><span style="font-size: 12px"> {{ video.author ? video.author : "Anonymous" }}</span>
+          </div>
+          <div class="desc">
+            {{ video.description }}
+          </div>
+        </div>
+      </ons-list-item>
+    </ons-list>
+    <p class="after-list" ng-show="history.length === 0">
+      {{labelHistory}}
+    </p>
+  </div>
+</ons-page>

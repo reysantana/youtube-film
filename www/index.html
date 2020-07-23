@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+
+  <title>Youtube Film</title>
+
+  <script src="cordova.js"></script>
+  <script src="./lib/onsenui/js/onsenui.js"></script>
+  <script src="./lib/angular/angular-1.5.8.min.js"></script>
+  <script src="./lib/onsenui/js/angular-onsenui.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+
+  <link rel="stylesheet" href="./lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="./lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+</head>
+<body ng-app="myApp" ng-controller="VideosController">
+
+  <ons-page>
+
+    <ons-toolbar>
+      <ons-if class="left" platform="android"></ons-if>
+      <div class="center" style="width: 100%">
+        <ons-if platform="android">Youtube Film<span class="modifier">&nbsp;&nbsp;{{ modifier }}&nbsp;&nbsp;</span><span class="sel-category">{{ selectedCategory }}</span></ons-if>
+        <ons-if platform="ios other">Youtube Film<span class="modifier">&nbsp;&nbsp;{{ modifier }}&nbsp;&nbsp;</span><span class="sel-category">{{ selectedCategory }}</span></ons-if>
+      </div>
+      <ons-if class="right" platform="android">
+          <ons-toolbar-button ng-click="popover.show($event)">
+            <ons-icon icon="ion-navicon"></ons-icon>
+          </ons-toolbar-button>
+          <ons-toolbar-button ng-click="androidSearchModal.show();" style="margin-right: 40px;">
+            <ons-icon icon="md-search"></ons-icon>
+          </ons-toolbar-button>
+      </ons-if>
+    </ons-toolbar>
+
+    <ons-tabbar var="tabbar" swipeable position="auto">
+      <ons-tab page="html/search.html"active ng-attr-icon="{{!isAndroid() && 'ion-ios-search-strong' || undefined }}" label="Search"></ons-tab>
+      <ons-tab page="html/history.html" ng-attr-icon="{{!isAndroid() && 'ion-ios-clock-outline' || undefined }}" label="History"></ons-tab>
+    </ons-tabbar>
+
+    <ons-modal var="modal" ng-click="youtube.player.stopVideo(); modal.hide();">
+      <div id="player">
+        <div id="placeholder" style="width: 100%"></div>
+      </div>
+    </ons-modal>
+
+    <ons-modal animation="fade" animation-options="{ duration: 0.15 }" var="androidSearchModal" class="android-search-modal" ng-click="androidSearchModal.hide();">
+      <ons-page ons-show="focusInput('android')">
+        <ons-toolbar class="android-search-bar">
+          <div class="left">
+            <ons-toolbar-button>
+              <ons-icon style="color: #181818" icon="md-arrow-left"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <label class="center" ng-click="$event.stopPropagation()">
+            <form ng-submit="search(true); tabbar.setActiveTab(0); androidSearchModal.hide();">
+              <ons-input type="search" modifier="transparent" input-id="android-search-input" placeholder="Search for movies in YouTube" ng-model="query"></ons-input>
+            </form>
+          </label>
+        </ons-toolbar>
+        <div class="content"></div>
+        <div class="background" style="background-color: transparent"></div>
+      </ons-page>
+    </ons-modal>
+
+  </ons-page>
+  <ons-template id="popover.html">
+    <ons-popover animation="fade-md" cancelable direction="down">
+      <ons-list>
+        <ons-list-item ng-repeat="option in options" material tappable ng-click="popover.hide($event); setCategory(option)">
+          {{ option.text }}
+        </ons-list-item>
+      </ons-list>
+    </ons-popover>
+  </ons-template>
+</body>
+</html>

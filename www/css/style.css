@@ -1,0 +1,129 @@
+@media all and (orientation: portrait) {
+  #player {
+    height: 40vh;
+  }
+}
+
+@media all and (orientation: landscape) {
+  #player {
+    height: 90vh;
+    width: 90vw;
+    margin: auto;
+  }
+}
+
+.modifier {
+  font-size: 20px;
+}
+
+.sel-category {
+  font-size: 16px;
+  color: #F0CB6B;
+  font-weight: 500;
+}
+
+.search-input {
+  background: #b31217;
+  border: none;
+  border-radius: 20px;
+  width: 96%;
+  margin: 6px auto 6px auto;
+  height: 37px;
+
+  background-image: url("data:image/svg+xml;utf8,<svg width='41px' height='40px' viewBox='0 0 41 40' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><title>Slice 1</title><g id='Page 1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'><g id='search' fill='#FFFFFF'><path d='M0.504,16.338 C0.504,25.085 7.635,32.165 16.444,32.165 C25.24,32.165 32.382,25.085 32.382,16.338 C32.382,7.591 25.24,0.5 16.444,0.5 C7.635,0.5 0.504,7.591 0.504,16.338 L0.504,16.338 Z M5.555,16.338 C5.555,10.359 10.423,5.521 16.445,5.521 C22.455,5.521 27.333,10.36 27.333,16.338 C27.333,22.317 22.455,27.156 16.445,27.156 C10.423,27.156 5.555,22.316 5.555,16.338 L5.555,16.338 Z M27.666,30.861 L34.521,38.67 C35.625,39.772 36.338,39.781 37.46,38.67 L39.661,36.489 C40.743,35.408 40.811,34.711 39.661,33.568 L31.765,26.793 L27.666,30.861 L27.666,30.861 Z M27.666,30.861' id='Shape'></path></g></g></svg>");
+  background-position: 8px center;
+  background-repeat: no-repeat;
+  -webkit-background-size: 17px;
+  background-size: 17px;
+  font-weight: 400;
+  display: block;
+}
+
+.search-input input {
+  color: white;
+}
+
+.search-input input::-webkit-input-placeholder{ color: #181818;}
+.search-input input:-moz-placeholder{ color: #181818;}
+.search-input input::-moz-placeholder{ color: #181818;}
+.search-input input:-ms-input-placeholder{ color: #181818;}
+
+
+.search-input input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.search-bar {
+  background: #181818;
+  width: 100%;
+  position: fixed;
+  display: block;
+  z-index: 2;
+}
+
+ons-list-item > .center {
+  padding-right: 15px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ons-list-item > .left {
+  align-self: flex-start;
+  min-width: 104px;
+}
+
+ons-page:not([modifier~=material]) > .search-bar ~ .content {
+  margin-top: 49px;
+}
+
+.after-list {
+  margin: 20px 0;
+  color: #999;
+  font-size: 15px;
+  text-align: center;
+}
+
+.thumbnail {
+  width: 88px;
+}
+
+.title {
+  font-weight: 500;
+  line-height: 16px;
+  font-size: 15px;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+.user {
+  font-size: 12px;
+  opacity: 0.8;
+  color: #181818;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+.desc {
+  line-height: 1.2;
+  font-size: 13px;
+  width: 100%;
+}
+
+.android-search-modal {
+  background-color: rgba(0,0,0,.05);
+}
+
+.android-search-bar {
+  background-color: #fff;
+}
+
+.android-search-bar ons-input {
+  width: 100%;
+}
+.page--full_bg__background {
+    background-image: url('Background.png') !important;
+    background-position: center !important; 
+    background-repeat: no-repeat !important; 
+    background-size: cover !important;
+}
